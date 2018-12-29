@@ -1,0 +1,30 @@
+{
+  "name": "rich-text",
+  "version": "1.0.0",
+  "description": "基于draft.js的富文本编辑器",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhangxuekang/rich-text.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhangxuekang/rich-text/issues"
+  },
+  "homepage": "https://github.com/zhangxuekang/rich-text#readme",
+  "dependencies": {
+    "draft-js": "^0.10.5",
+    "path": "^0.12.7",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.1.2"
+  }
+}
