@@ -5,7 +5,7 @@ var config = {
         path.resolve(__dirname, 'app/index.js')
     ],
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.resolve(__dirname, 'dist'), // 指定编译后的代码位置为 dist/bundle.js
         filename: 'bundle.js'
     },
     // webpack-dev-server的配置
@@ -18,9 +18,9 @@ var config = {
     module: {
         loaders: [
             {
-                test: /\.less$/,
-                loaders: ['style', 'css', 'less'],
-                include: path.resolve(__dirname, 'app')
+                test: /\.css$/,
+                loaders: ['style-loader', 'css-loader'],
+                include: path.resolve(__dirname, 'app'),
             },
             {
                 test: /\.jsx?$/,
