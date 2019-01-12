@@ -18,9 +18,9 @@ var config = {
     module: {
         loaders: [
             {
-                test: /\.css$/,
-                loaders: ['style-loader', 'css-loader'],
-                include: path.resolve(__dirname, 'app'),
+                test: /.less$/,
+                loaders: ['style-loader', 'css-loader', 'less-loader'],
+                exclude: 'node_modules'
             },
             {
                 test: /\.jsx?$/,
