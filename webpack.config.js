@@ -2,7 +2,7 @@ var path = require('path'); //引入node的path库
 var HtmlwebpackPlugin = require('html-webpack-plugin');
 var config = {
     entry: [
-        path.resolve(__dirname, 'app/index.js')
+        path.resolve(__dirname, 'app/index.jsx')
     ],
     output: {
         path: path.resolve(__dirname, 'dist'), // 指定编译后的代码位置为 dist/bundle.js
@@ -18,7 +18,7 @@ var config = {
     module: {
         loaders: [
             {
-                test: /.less$/,
+                test: /(.less)|(.css)$/,
                 loaders: ['style-loader', 'css-loader', 'less-loader'],
                 exclude: 'node_modules'
             },
