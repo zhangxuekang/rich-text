@@ -1,9 +1,14 @@
 {
     "env": {
         "browser": true,
-        "es6": true
+        "es6": true,
+        "amd": true,
+        "node": true
     },
-    "extends": "eslint:recommended",
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
     "parserOptions": {
         "ecmaFeatures": {
             "jsx": true
@@ -11,16 +16,35 @@
         "ecmaVersion": 2018,
         "sourceType": "module"
     },
+    "settings": {
+        "react": {
+            "createClass": "createReactClass",
+            "pragma": "React",
+            "version": "detect",
+            "flowVersion": "0.53"
+        },
+        "propWrapperFunctions": [
+            "forbidExtraProps",
+            {
+                "property": "freeze",
+                "object": "Object"
+            },
+            {
+                "property": "myFavoriteWrapper"
+            }
+        ]
+    },
+    "parser": "babel-eslint",
     "plugins": [
         "react"
     ],
     "rules": {
         "indent": [
             "error",
-            4
+            2
         ],
         "linebreak-style": [
-            "error",
+            "off",
             "windows"
         ],
         "quotes": [
@@ -28,6 +52,20 @@
             "single"
         ],
         "semi": [
+            "error",
+            "never"
+        ],
+        "block-scoped-var": [
+            2
+        ],
+        "eqeqeq": [
+            2
+        ],
+        "init-declarations": [
+            "error",
+            "never"
+        ],
+        "array-element-newline": [
             "error",
             "never"
         ]
