@@ -1,0 +1,16 @@
+@import '../../style/var.less';
+
+.tool{
+  display: inline-block;
+  cursor: pointer;
+  padding: 2px;
+  border: 1px solid @BORDER_COLOR;
+  border-radius: 4px;
+  &:hover{
+    background-color: @ACTIVE_COLOR;
+  }
+  &>div{
+    display: inline-block;
+    user-select: none;
+  }
+}

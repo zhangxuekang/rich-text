@@ -68,6 +68,7 @@
         "array-element-newline": [
             "error",
             "never"
-        ]
+        ],
+        "no-console": "off"
     }
 }
