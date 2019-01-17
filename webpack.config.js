@@ -7,6 +7,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'), // 指定编译后的代码位置为 dist/bundle.js
     filename: 'bundle.js'
   },
+  resolve: {
+    extensions: ['', '.js', '.jsx', '.json'],
+  },
   // webpack-dev-server的配置
   devServer: {
     port: 2333,

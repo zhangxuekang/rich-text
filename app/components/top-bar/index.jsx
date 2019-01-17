@@ -1,17 +1,21 @@
 import React from 'react'
 import './top-bar.less'
-import Bold from '../tools/bold.jsx'
-
-function changeBlod() {
-  console.log('bold', '<-------zxk')
-}
+import ToolFactory, { toolCollections } from '../tools/tool-factory'
 
 export default class TopBar extends React.Component {
+
+  change(param) {
+    console.log(param)
+  }
 
   render() {
     return (
       <div className="top-bar">
-        <Bold onChange={changeBlod}/>
+        {toolCollections.map((tool) => {
+          return ToolFactory.getTool(tool.name, {
+            onChange: this.change.bind(this)
+          })
+        })}
       </div>
     )
   }

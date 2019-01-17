@@ -2,11 +2,6 @@
   "presets": [
     "latest",
     "react",
-    {
-      "ignore": [
-        "/node_modules"
-      ]
-    }
   ],
-  "plugins": []
+  "plugins": ["transform-object-rest-spread"]
 }

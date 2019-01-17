@@ -6,7 +6,10 @@ import PropTypes from 'prop-types'
 class Bold extends React.Component {
 
   handleClick() {
-    this.props.onChange()
+    this.props.onChange({
+      type: 'bold',
+      value: null
+    })
   }
 
   render() {
