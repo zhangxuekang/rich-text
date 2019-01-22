@@ -5,11 +5,11 @@ import PropTypes from 'prop-types'
 
 class Bold extends React.Component {
 
-  handleClick() {
+  handleClick(e) {
     this.props.onChange({
       type: 'bold',
       value: null
-    })
+    }, e)
   }
 
   render() {

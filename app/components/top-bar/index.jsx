@@ -1,11 +1,14 @@
 import React from 'react'
 import './top-bar.less'
+import PropTypes from 'prop-types'
 import ToolFactory, { toolCollections } from '../tools/tool-factory'
 
 export default class TopBar extends React.Component {
 
-  change(param) {
-    console.log(param)
+  change(param, e) {
+    this.props.onChange(param)
+    e.stopPropagation()
+    e.preventDefault()
   }
 
   render() {
@@ -19,4 +22,8 @@ export default class TopBar extends React.Component {
       </div>
     )
   }
+}
+
+TopBar.propTypes = {
+  onChange: PropTypes.func.isRequired
 }
