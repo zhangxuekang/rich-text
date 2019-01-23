@@ -7,7 +7,6 @@ export default class TopBar extends React.Component {
 
   change(param, e) {
     this.props.onChange(param)
-    e.stopPropagation()
     e.preventDefault()
   }
 
