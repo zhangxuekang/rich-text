@@ -41,7 +41,10 @@
     "rules": {
         "indent": [
             "error",
-            2
+            2,
+            {
+                "SwitchCase": 1
+            }
         ],
         "linebreak-style": [
             "off",
@@ -62,10 +65,6 @@
             2
         ],
         "init-declarations": [
-            "error",
-            "never"
-        ],
-        "array-element-newline": [
             "error",
             "never"
         ],

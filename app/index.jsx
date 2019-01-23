@@ -4,10 +4,7 @@ import './style/base.less'
 import { EditorState, RichUtils } from 'draft-js'
 import TopBar from './components/top-bar/index.jsx'
 import Stage from './components/stage/index.jsx'
-
-const inlineStyle = {
-  bold: 'BOLD'
-}
+import { toolsType } from './config/inline-style-map'
 
 class RichText extends React.Component {
   constructor(props) {
@@ -19,12 +16,30 @@ class RichText extends React.Component {
    * 修改文本样式方法
    * @param {*} param 
    */
-  handleClickChange(param) {
-    const { type, value } = param
-    if (value) {
-      console.log()
+  handleClickChange(argu) {
+    const { type, param } = argu
+    const inlineStyleType = this.getInlineStyleType(type, param)
+    this.setState({ editorState: RichUtils.toggleInlineStyle(this.state.editorState, toolsType[inlineStyleType]) })
+  }
+
+  /**
+   * 根据tool类型和携带的参数, 拼出最终的inlineStyleType
+   * @param {*} toolType 
+   * @param {*} value 
+   */
+  getInlineStyleType(toolType, param) {
+    switch (toolType) {
+      case 'bold':
+        return 'bold'
+      case 'italic':
+        return 'italic'
+      case 'color':
+        return `color_${param.value}`
+      case 'underline':
+        return 'underline'
+      default:
+        return 'none'
     }
-    this.setState({ editorState: RichUtils.toggleInlineStyle(this.state.editorState, inlineStyle[type]) })
   }
 
   /**

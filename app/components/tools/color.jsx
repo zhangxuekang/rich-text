@@ -3,11 +3,11 @@ import './tools.less'
 import Base from './base.jsx'
 import PropTypes from 'prop-types'
 
-class Bold extends React.Component {
+class Color extends React.Component {
 
   handleClick(e) {
     this.props.onChange({
-      value: null
+      value: 'ffffff'
     }, e)
   }
 
@@ -23,7 +23,7 @@ class Bold extends React.Component {
   }
 }
 
-Bold.propTypes = {
+Color.propTypes = {
   onChange: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -31,4 +31,4 @@ Bold.propTypes = {
 
 
 
-export default Base(Bold)
+export default Base(Color)

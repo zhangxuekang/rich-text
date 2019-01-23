@@ -5,8 +5,14 @@ import ToolFactory, { toolCollections } from '../tools/tool-factory'
 
 export default class TopBar extends React.Component {
 
-  change(param, e) {
-    this.props.onChange(param)
+  /**
+   * 这里做所有工具事件的中转
+   * @param {*} type 
+   * @param {*} param 
+   * @param {*} e 
+   */
+  transmit(type, param, e) {
+    this.props.onChange({type, param})
     e.preventDefault()
   }
 
@@ -14,8 +20,8 @@ export default class TopBar extends React.Component {
     return (
       <div className="top-bar">
         {toolCollections.map((tool) => {
-          return ToolFactory.getTool(tool.name, {
-            onChange: this.change.bind(this)
+          return ToolFactory.getTool(tool.type, {
+            onChange: this.transmit.bind(this, tool.type)
           })
         })}
       </div>

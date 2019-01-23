@@ -3,7 +3,7 @@ import './tools.less'
 import Base from './base.jsx'
 import PropTypes from 'prop-types'
 
-class Bold extends React.Component {
+class Underline extends React.Component {
 
   handleClick(e) {
     this.props.onChange({
@@ -14,7 +14,7 @@ class Bold extends React.Component {
   render() {
     return (
       <div
-        className="tool-bold"
+        className="tool-underline"
         onMouseDown={this.handleClick.bind(this)}
       >
         {this.props.title}
@@ -23,7 +23,7 @@ class Bold extends React.Component {
   }
 }
 
-Bold.propTypes = {
+Underline.propTypes = {
   onChange: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -31,4 +31,4 @@ Bold.propTypes = {
 
 
 
-export default Base(Bold)
+export default Base(Underline)
