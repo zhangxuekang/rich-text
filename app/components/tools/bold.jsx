@@ -14,7 +14,10 @@ class Bold extends React.Component {
 
   render() {
     return (
-      <div className="tool-bold" onClick={this.handleClick.bind(this)}>
+      <div
+        className="tool-bold"
+        onMouseDown={this.handleClick.bind(this)} // 研究下为什么onclick时间不能阻止事件冒泡
+      >
         bold
       </div>
     )

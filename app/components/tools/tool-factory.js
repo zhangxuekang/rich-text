@@ -1,5 +1,7 @@
 import * as React from 'react'
 import Bold from './bold'
+
+// 工具组件配置
 const toolCollections = [
   { name: 'bold', widget: Bold }
 ]
@@ -16,8 +18,6 @@ export default class ToolFactory {
         return true
       }
     })
-
-
     if (tools.length > 0) {
       return React.createElement(tools[0].widget, { key: name, ...props })
     }
