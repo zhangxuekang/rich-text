@@ -4,7 +4,6 @@ import './style/base.less'
 import { EditorState, RichUtils } from 'draft-js'
 import TopBar from './components/top-bar/index.jsx'
 import Stage from './components/stage/index.jsx'
-import { toolsType } from './config/inline-style-map'
 
 class RichText extends React.Component {
   constructor(props) {
@@ -19,7 +18,7 @@ class RichText extends React.Component {
   handleClickChange(argu) {
     const { type, param } = argu
     const inlineStyleType = this.getInlineStyleType(type, param)
-    this.setState({ editorState: RichUtils.toggleInlineStyle(this.state.editorState, toolsType[inlineStyleType]) })
+    this.setState({ editorState: RichUtils.toggleInlineStyle(this.state.editorState, inlineStyleType) })
   }
 
   /**
@@ -30,13 +29,13 @@ class RichText extends React.Component {
   getInlineStyleType(toolType, param) {
     switch (toolType) {
       case 'bold':
-        return 'bold'
+        return 'BOLD'
       case 'italic':
-        return 'italic'
+        return 'ITALIC'
       case 'color':
-        return `color_${param.value}`
+        return `color_${param.value.substring(1)}`.toUpperCase()
       case 'underline':
-        return 'underline'
+        return 'UNDERLINE'
       default:
         return 'none'
     }

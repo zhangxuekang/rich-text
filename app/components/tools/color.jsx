@@ -7,7 +7,7 @@ class Color extends React.Component {
 
   handleClick(e) {
     this.props.onChange({
-      value: 'ffffff'
+      value: '#00ff00'
     }, e)
   }
 

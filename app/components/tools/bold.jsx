@@ -15,10 +15,9 @@ class Bold extends React.Component {
     return (
       <div
         className="tool-bold"
-        onMouseDown={this.handleClick.bind(this)}
-      >
+        onMouseDown={this.handleClick.bind(this)}>
         {this.props.title}
-      </div>
+      </div >
     )
   }
 }
