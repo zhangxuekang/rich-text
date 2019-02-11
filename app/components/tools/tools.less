@@ -1,20 +1,45 @@
 @import '../../style/var.less';
-
-.tool{
+.tool {
   display: inline-block;
-  cursor: pointer;
-  padding: 2px;
-  border: 1px solid @BORDER_COLOR;
+  cursor: pointer; // outline: 1px solid @BORDER_COLOR;
+  padding: 4px;
   border-radius: 4px;
   margin-right: 4px;
-  &:hover{
+  width: 20px;
+  height: 20px;
+  &:hover {
     background-color: @ACTIVE_COLOR;
   }
-  &>div{
+  &>div {
     display: inline-block;
     user-select: none;
+    width: 16px;
+    height: 16px;
+    margin-left: 2px;
+    background-size: contain;
+    background-repeat: no-repeat;
   }
-  &:last-child{
+  &:last-child {
     margin-right: 0;
   }
+}
+
+.tool-bold {
+  background-image: url('../../source/img/tool-bold.png');
+}
+
+.tool-color{
+  background-image: url('../../source/img/tool-color.png');
+}
+
+.tool-italic{
+  background-image: url('../../source/img/tool-italic.png');
+}
+
+.tool-underline{
+  background-image: url('../../source/img/tool-underline.png');
+}
+
+.tool-strikethrough{
+  background-image: url('../../source/img/tool-strikethrough.png')
 }

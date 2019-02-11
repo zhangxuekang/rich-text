@@ -36,6 +36,8 @@ class RichText extends React.Component {
         return `color_${param.value.substring(1)}`.toUpperCase()
       case 'underline':
         return 'UNDERLINE'
+      case 'strikethrough':
+        return 'STRIKETHOUGH'
       default:
         return 'none'
     }

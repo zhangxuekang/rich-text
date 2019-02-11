@@ -36,6 +36,9 @@ const styleMap = {
   UNDERLINE: {
     textDecoration: 'underline'
   },
+  STRIKETHOUGH: {
+    textDecoration: 'line-through'
+  }
 }
 Object.keys(styleData).forEach((key) => {
   const values = styleData[key]

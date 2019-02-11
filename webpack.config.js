@@ -26,6 +26,13 @@ module.exports = {
       test: /(\.js)|(jsx)$/,
       exclude: /node_modules/,
       loaders: ['babel-loader', 'eslint-loader'],
+    }, {
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      exclude: /node_modules/,
+      loaders: ['file-loader'],
+    }, {
+      test: /\.json$/,
+      loaders: ['json-loader']
     }]
   },
   plugins: [

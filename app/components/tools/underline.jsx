@@ -17,7 +17,6 @@ class Underline extends React.Component {
         className="tool-underline"
         onMouseDown={this.handleClick.bind(this)}
       >
-        {this.props.title}
       </div>
     )
   }

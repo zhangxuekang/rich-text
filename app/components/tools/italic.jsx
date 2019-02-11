@@ -17,7 +17,6 @@ class Italic extends React.Component {
         className="tool-italic"
         onMouseDown={this.handleClick.bind(this)}
       >
-        {this.props.title}
       </div>
     )
   }

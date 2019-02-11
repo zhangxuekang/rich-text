@@ -3,7 +3,7 @@ import './tools.less'
 import Base from './base.jsx'
 import PropTypes from 'prop-types'
 
-class Bold extends React.Component {
+class strikethrough extends React.Component {
 
   handleClick(e) {
     this.props.onChange({
@@ -14,14 +14,15 @@ class Bold extends React.Component {
   render() {
     return (
       <div
-        className="tool-bold"
-        onMouseDown={this.handleClick.bind(this)}>
-      </div >
+        className="tool-strikethrough"
+        onMouseDown={this.handleClick.bind(this)}
+      >
+      </div>
     )
   }
 }
 
-Bold.propTypes = {
+strikethrough.propTypes = {
   onChange: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -29,4 +30,4 @@ Bold.propTypes = {
 
 
 
-export default Base(Bold)
+export default Base(strikethrough)
