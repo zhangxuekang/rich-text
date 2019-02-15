@@ -3,6 +3,7 @@ import './tools.less'
 import Base from './base.jsx'
 import PropTypes from 'prop-types'
 import Popover from '../../lib/popover'
+import ColorPicker from '../../lib/color-picker'
 
 class Color extends React.Component {
 
@@ -30,25 +31,28 @@ class Color extends React.Component {
       isOpen: !preState.isOpen
     }))
     e.preventDefault()
+    e.stopPropagation()
   }
 
   handleClick(value, e) {
     this.props.onChange({
       value
     }, e)
+    this.close()
   }
 
   getPopoverContent() {
     const contentStyle = {
-      width: '100px',
-      height: '80px',
+      width: '120px',
+      height: '48px',
       background: '#fff',
       outline: '1px solid gray'
     }
     return (
       <div style={contentStyle}>
-        <span onMouseDown={this.handleClick.bind(this, '#ffff00')}>黄</span>
-        <span onMouseDown={this.handleClick.bind(this, '#00ff00')}>绿</span>
+        <ColorPicker
+          onChange={this.handleClick.bind(this)}
+        />
       </div>
     )
   }
@@ -58,6 +62,8 @@ class Color extends React.Component {
       <Popover
         content={this.getPopoverContent()}
         isOpen={this.state.isOpen}
+        position="bottom"
+        align="right"
       >
         <div
           className="tool-color"

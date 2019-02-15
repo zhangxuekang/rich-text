@@ -64,10 +64,7 @@
         "eqeqeq": [
             2
         ],
-        "init-declarations": [
-            "error",
-            "never"
-        ],
+        "init-declarations":"off",
         "no-console": "off",
         "no-unused-vars": "warn",
         "react/prop-types": ["error", { "ignore": ["children"] }]

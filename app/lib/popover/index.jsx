@@ -7,7 +7,8 @@ class Popover extends React.Component {
   }
 
   packContent(btn, content) {
-    if (!this.props.isOpen) {
+    const { position, align, isOpen } = this.props
+    if (!isOpen) {
       return null
     }
     const btnStyle = btn.props.style || { width: '26px', height: '26px' }
@@ -17,49 +18,31 @@ class Popover extends React.Component {
     const packStyle = pack.props.style || { width: '100px', height: '100px' }
     const packW = parseInt(packStyle.width) || 100
     const packH = parseInt(packStyle.height) || 100
-    // 上/下b/t      左/中/右l/c/r
-    const position = {
-      bc: {
-        left: -(packW - btnW) / 2 + 'px',
-        top: btnH + 'px'
-      },
-      br: {
-        left: 0,
-        top: btnH + 'px'
-      },
-      bl: {
-        left: -packW + btnW + 'px',
-        top: btnH + 'px'
-      },
-      tc: {
-        left: -(packW - btnW) / 2 + 'px',
-        top: -packH + 'px'
-      },
-      tr: {
-        left: 0,
-        top: -packH + 'px'
-      },
-      tl: {
-        left: -packW + btnW + 'px',
-        top: -packH + 'px'
-      }
+    let top = btnH + 'px'
+    if (position === 'top') {
+      top = -packH + 'px'
     }
-    return React.cloneElement(pack, {
-      ...pack.props,
+    let left = 0
+    if (align === 'left') {
+      left = -packW + btnW + 'px'
+    } else if (align === 'center') {
+      left = -(packW - btnW) / 2 + 'px'
+    }
+    const props = {
       style: {
-        ...pack.props.style,
         position: 'fixed',
         zIndex: 999,
-        ...position.bc
+        top,
+        left
       },
-    })
+    }
+    return React.cloneElement(<div className='popover'>{pack}</div>, props)
   }
 
   render() {
     const children = React.Children.only(this.props.children)
     const content = this.packContent(children, this.props.content)
     return React.cloneElement(children, {
-      ...children.props,
       style: {
         ...children.props.style,
         transform: 'translate(0px, 0px)'
@@ -71,7 +54,16 @@ class Popover extends React.Component {
 
 Popover.propTypes = {
   content: PropTypes.node.isRequired,
-  isOpen: PropTypes.bool.isRequired
+  isOpen: PropTypes.bool.isRequired,
+  align: PropTypes.oneOf(['left', 'center', 'right']),
+  position: PropTypes.oneOf(['bottom', 'top'])
+}
+
+Popover.defaultProps = {
+  content: null,
+  isOpen: false,
+  align: 'right',
+  position: 'bottom'
 }
 
 export default Popover

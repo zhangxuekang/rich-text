@@ -1,6 +1,6 @@
 const styleData = {
-  color: ['#ffffff', '#ff0000', '#ffff00', '#0000ff', '#00ff00', '#999999', '#ff7f00', '#7c3a89', '#d2d7d3', ''],
-  backgroundColor: ['#ffffff', '#ff0000', '#ffff00', '#0000ff', '#00ff00', '#999999', '#ff7f00', '#7c3a89', '#d2d7d3', ''],
+  color: ['#000000', '#ffffff', '#ff0000', '#ffff00', '#0000ff', '#00ff00', '#999999', '#ff7f00', '#7c3a89', '#d2d7d3'],
+  backgroundColor: ['#000000', '#ffffff', '#ff0000', '#ffff00', '#0000ff', '#00ff00', '#999999', '#ff7f00', '#7c3a89', '#d2d7d3'],
   fontSize: [28, 30, 32, 34],
   fontFamily: [{
     name: 'Araial',
