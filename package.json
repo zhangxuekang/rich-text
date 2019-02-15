@@ -1,6 +1,5 @@
 {
     "dependencies": {
-        "antd": "^3.13.1",
         "draft-js": "^0.10.5",
         "eslint-loader": "^2.1.1",
         "eslint-plugin-react": "^7.12.3",
