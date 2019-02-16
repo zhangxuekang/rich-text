@@ -10,6 +10,7 @@
     },
     "scripts": {
         "dev": "webpack-dev-server --devtool eval --progress --colors --hot --host 127.0.0.1",
+        "build": "webpack --progress --colors",
         "fix": "eslint --fix app && eslint --fix webpack.config.js"
     },
     "devDependencies": {
