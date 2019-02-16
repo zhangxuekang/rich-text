@@ -4,6 +4,24 @@ import PropTypes from 'prop-types'
 class Popover extends React.Component {
   constructor(props) {
     super(props)
+    this.handleClickOut = this.handleClickOut.bind(this)
+  }
+
+  componentWillReceiveProps(pros) {
+    const { isOpen } = pros
+    if (isOpen) {
+      window.addEventListener('mousedown', this.handleClickOut)
+    } else {
+      window.removeEventListener('mousedown', this.handleClickOut)
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('mousedown', this.handleClickOut)
+  }
+
+  handleClickOut() {
+    this.props.onClickOutside()
   }
 
   packContent(btn, content) {
@@ -56,14 +74,16 @@ Popover.propTypes = {
   content: PropTypes.node.isRequired,
   isOpen: PropTypes.bool.isRequired,
   align: PropTypes.oneOf(['left', 'center', 'right']),
-  position: PropTypes.oneOf(['bottom', 'top'])
+  position: PropTypes.oneOf(['bottom', 'top']),
+  onClickOutside: PropTypes.func
 }
 
 Popover.defaultProps = {
   content: null,
   isOpen: false,
   align: 'right',
-  position: 'bottom'
+  position: 'bottom',
+  onClickOutside: () => { }
 }
 
 export default Popover

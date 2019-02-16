@@ -8,7 +8,10 @@ import Stage from './components/stage/index.jsx'
 class RichText extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { editorState: EditorState.createEmpty() }
+    this.state = {
+      editorState: EditorState.createEmpty(),
+      textAlignment: 'left'
+    }
   }
 
   /**
@@ -17,8 +20,28 @@ class RichText extends React.Component {
    */
   handleClickChange(argu) {
     const { type, param } = argu
-    const inlineStyleType = this.getInlineStyleType(type, param)
-    this.setState({ editorState: RichUtils.toggleInlineStyle(this.state.editorState, inlineStyleType) })
+    switch (true) {
+      case /^align/.test(type):
+        this.setState({
+          textAlignment: param.value
+        })
+        break
+      case (type === 'ul' || type === 'ol'):
+        this.setState({
+          editorState: RichUtils.toggleBlockType(
+            this.state.editorState,
+            param.value
+          )
+        })
+        break
+      default:
+        const inlineStyleType = this.getInlineStyleType(type, param)
+        this.setState({
+          editorState: RichUtils.toggleInlineStyle(
+            this.state.editorState,
+            inlineStyleType)
+        })
+    }
   }
 
   /**
@@ -34,6 +57,8 @@ class RichText extends React.Component {
         return 'ITALIC'
       case 'color':
         return `color_${param.value.substring(1)}`.toUpperCase()
+      case 'backgroundColor':
+        return `background_color_${param.value.substring(1)}`.toUpperCase()
       case 'underline':
         return 'UNDERLINE'
       case 'strikethrough':
@@ -60,6 +85,7 @@ class RichText extends React.Component {
         <Stage
           editorState={this.state.editorState}
           onChange={this.handleTextChange.bind(this)}
+          textAlignment={this.state.textAlignment}
         />
       </div>
     )

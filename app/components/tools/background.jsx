@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import Popover from '../../lib/popover'
 import ColorPicker from '../../lib/color-picker'
 
-class Color extends React.Component {
+class BackgroundColor extends React.Component {
 
   constructor(props) {
     super(props)
@@ -67,7 +67,7 @@ class Color extends React.Component {
         onClickOutside={this.close.bind(this)}
       >
         <div
-          className="tool-color"
+          className="tool-background-color"
           onMouseDown={this.toggle.bind(this)}
         >
         </div>
@@ -76,7 +76,7 @@ class Color extends React.Component {
   }
 }
 
-Color.propTypes = {
+BackgroundColor.propTypes = {
   onChange: PropTypes.func.isRequired,
   type: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -84,4 +84,4 @@ Color.propTypes = {
 
 
 
-export default Base(Color)
+export default Base(BackgroundColor)
