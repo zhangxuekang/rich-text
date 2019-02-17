@@ -2,8 +2,8 @@ import React from 'react'
 import './tools.less'
 import Base from './base.jsx'
 import PropTypes from 'prop-types'
-import Popover from '../../lib/popover'
 import ColorPicker from '../../lib/color-picker'
+import { Overlay, Popover } from 'react-bootstrap'
 
 class Color extends React.Component {
 
@@ -12,24 +12,40 @@ class Color extends React.Component {
     this.state = {
       isOpen: false
     }
+    this.attachRef = target => this.setState({ target })
+    this.handleClickOut = this.handleClickOut.bind(this)
+    this.open = this.open.bind(this)
+    this.close = this.close.bind(this)
+  }
+
+  handleClickOut() {
+    this.close()
   }
 
   open() {
     this.setState({
       isOpen: true
     })
+    window.addEventListener('mousedown', this.handleClickOut)
   }
 
   close() {
     this.setState({
       isOpen: false
     })
+    window.removeEventListener('mousedown', this.handleClickOut)
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('mousedown', this.handleClickOut)
   }
 
   toggle(e) {
-    this.setState(preState => ({
-      isOpen: !preState.isOpen
-    }))
+    if (this.state.isOpen) {
+      this.close()
+    } else {
+      this.open()
+    }
     e.preventDefault()
     e.stopPropagation()
   }
@@ -42,36 +58,34 @@ class Color extends React.Component {
   }
 
   getPopoverContent() {
-    const contentStyle = {
-      width: '120px',
-      height: '48px',
-      background: '#fff',
-      outline: '1px solid gray'
-    }
     return (
-      <div style={contentStyle}>
+      <Popover id='tool-color-popover'>
         <ColorPicker
           onChange={this.handleClick.bind(this)}
         />
-      </div>
+      </Popover>
     )
   }
 
   render() {
     return (
-      <Popover
-        content={this.getPopoverContent()}
-        isOpen={this.state.isOpen}
-        position="bottom"
-        align="right"
-        onClickOutside={this.close.bind(this)}
-      >
+      <React.Fragment>
         <div
           className="tool-color"
           onMouseDown={this.toggle.bind(this)}
+          ref={this.attachRef}
+        />
+        <Overlay
+          target={this.state.target}
+          show={this.state.isOpen}
+          placement="bottom"
+          rootClose={true}
+          rootCloseEvent="mousedown"
+          onHide={() => { }}
         >
-        </div>
-      </Popover>
+          {this.getPopoverContent()}
+        </Overlay>
+      </React.Fragment>
     )
   }
 }
