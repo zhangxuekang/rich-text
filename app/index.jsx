@@ -26,14 +26,13 @@ class RichText extends React.Component {
    * @param {*} param 
    */
   handleClickChange(argu) {
+    const { editorState } = this.state
+    const contentState = editorState.getCurrentContent()
+    const selection = editorState.getSelection()
     const { type, param } = argu
     switch (true) {
       case 'hyperlink' === type:
-        console.log(param.value, '<-------zxk')
-        const { editorState } = this.state
-        const selection = editorState.getSelection()
         if (!selection.isCollapsed()) {
-          const contentState = editorState.getCurrentContent()
           const startKey = editorState.getSelection().getStartKey()
           const startOffset = editorState.getSelection().getStartOffset()
           const blockWithLinkAtBeginning = contentState.getBlockForKey(startKey)
@@ -57,6 +56,19 @@ class RichText extends React.Component {
                 newEditorState.getSelection(),
                 entityKey
               )
+            })
+          }
+        }
+        break
+      case 'unhyperlink' === type:
+        if (!selection.isCollapsed()) {
+          const startKey = editorState.getSelection().getStartKey()
+          const startOffset = editorState.getSelection().getStartOffset()
+          const blockWithLinkAtBeginning = contentState.getBlockForKey(startKey)
+          const linkKey = blockWithLinkAtBeginning.getEntityAt(startOffset)
+          if (linkKey) {
+            this.setState({
+              editorState: RichUtils.toggleLink(editorState, selection, null),
             })
           }
         }

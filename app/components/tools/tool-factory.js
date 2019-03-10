@@ -11,6 +11,7 @@ import Right from './right'
 import Ul from './ul'
 import Ol from './ol'
 import Hyperlink from './hyperlink'
+import Unhyperlink from './unhyperlink'
 
 // 工具组件配置
 const toolCollections = [
@@ -26,6 +27,7 @@ const toolCollections = [
   { type: 'ul', title: '有序列表', widget: Ul },
   { type: 'ol', title: '无序列表', widget: Ol },
   { type: 'hyperlink', title: '超链接', widget: Hyperlink },
+  { type: 'unhyperlink', title: '超链接', widget: Unhyperlink },
 ]
 
 export default class ToolFactory {
