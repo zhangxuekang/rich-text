@@ -15,7 +15,7 @@ export default function(Target) {
 
     showTitle() {
       this.setState({
-        show: true
+        show: false
       })
       window.addEventListener('click', this.closeTitle)
     }

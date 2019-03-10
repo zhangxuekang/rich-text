@@ -10,6 +10,7 @@ import Center from './center'
 import Right from './right'
 import Ul from './ul'
 import Ol from './ol'
+import Hyperlink from './hyperlink'
 
 // 工具组件配置
 const toolCollections = [
@@ -24,6 +25,7 @@ const toolCollections = [
   { type: 'alignRight', title: '右对齐', widget: Right },
   { type: 'ul', title: '有序列表', widget: Ul },
   { type: 'ol', title: '无序列表', widget: Ol },
+  { type: 'hyperlink', title: '超链接', widget: Hyperlink },
 ]
 
 export default class ToolFactory {
