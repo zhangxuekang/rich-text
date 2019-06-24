@@ -34,7 +34,7 @@ class Hyperlink extends React.Component {
   open() {
     this.setState({
       show: true,
-      url: 'www.'
+      url: 'https://www.'
     })
   }
 
